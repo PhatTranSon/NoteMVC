@@ -5,7 +5,7 @@ import android.view.View;
 public abstract class BaseViewMvc implements ViewMvc{
     private View mView;
 
-    protected void setView(View view) {
+    protected void setRootView(View view) {
         mView = view;
     }
 

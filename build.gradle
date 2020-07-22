@@ -12,6 +12,16 @@ buildscript {
     }
 }
 
+ext {
+    //Config
+    compile_sdk_version = 29
+    build_tools_version = "29.0.3"
+    min_sdk_version = 21
+    target_sdk_version = 29
+    //Dependencies
+    room_version = "2.2.5"
+}
+
 allprojects {
     repositories {
         google()
