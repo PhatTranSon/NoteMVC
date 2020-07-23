@@ -29,8 +29,11 @@ dependencies {
 
     //Room
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 
+    //Card view
+    implementation "androidx.cardview:cardview:$cardview_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
