@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 
+import com.example.mvcnote.screens.common.toolbar.ToolbarViewMvc;
 import com.example.mvcnote.screens.notelist.NoteListViewMvc;
 import com.example.mvcnote.screens.notelist.NoteListViewMvcImpl;
 import com.example.mvcnote.screens.notelist.notelistitem.NoteListItemViewMvc;
@@ -28,6 +30,13 @@ public class ViewMvcFactory {
 
     public NoteListItemViewMvc getNoteListItemView(@Nullable ViewGroup parent) {
         return new NoteListItemViewMvcImpl(
+                LayoutInflater.from(mContext),
+                parent
+        );
+    }
+
+    public ToolbarViewMvc getToolbarViewMvc(@Nullable ViewGroup parent) {
+        return new ToolbarViewMvc(
                 LayoutInflater.from(mContext),
                 parent
         );

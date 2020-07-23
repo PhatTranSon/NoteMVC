@@ -1,7 +1,6 @@
 package com.example.mvcnote.database;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -27,7 +26,6 @@ public abstract class NoteDatabase extends RoomDatabase  {
             Executors.newSingleThreadExecutor().execute(new Runnable() {
                 @Override
                 public void run() {
-                    Log.i("CALLED", "yes");
                     db.execSQL("INSERT INTO notes(title, body) VALUES(\'Hello World\', \'Hello\')");
                 }
             });
