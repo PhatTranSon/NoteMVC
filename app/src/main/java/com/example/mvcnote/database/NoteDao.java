@@ -5,17 +5,19 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.core.Single;
+import java.util.List;
+
+import io.reactivex.Completable;
+import io.reactivex.Observable;
 
 @Dao
 public interface NoteDao {
     @Query("SELECT * FROM notes")
-    Observable<NoteEntity> getAllNotes();
+    Observable<List<NoteEntity>> getAllNotes();
 
     @Insert
-    Single<NoteEntity> add(NoteEntity noteEntity);
+    Completable add(NoteEntity noteEntity);
 
     @Delete
-    Single<Integer> delete(NoteEntity noteEntity);
+    Completable delete(NoteEntity noteEntity);
 }
