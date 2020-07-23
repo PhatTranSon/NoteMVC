@@ -22,6 +22,8 @@ ext {
     //Dependencies
     room_version = "2.2.5"
     cardview_version = "1.0.0"
+    rxjava_version = "3.0.4"
+    rxandroid_version = "3.0.0"
 }
 
 allprojects {
