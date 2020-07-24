@@ -13,7 +13,7 @@ import com.example.mvcnote.screens.common.toolbar.ToolbarViewMvc;
 
 import java.util.List;
 
-public class NoteListActivity extends BaseActivity implements FetchFakeNoteUseCase.Listener {
+public class NoteListActivity extends BaseActivity implements FetchFakeNoteUseCase.Listener, ToolbarViewMvc.Listener {
     private NoteListViewMvc mViewMvc;
     private FetchFakeNoteUseCase mFetchNotesUseCase;
     private Toolbar mToolbar;
@@ -33,13 +33,10 @@ public class NoteListActivity extends BaseActivity implements FetchFakeNoteUseCa
         setContentView(mViewMvc.getRootView());
     }
 
-    private void setUpToolbar() {
-
-    }
-
     @Override
     protected void onStart() {
         super.onStart();
+        mToolbarViewMvc.registerListener(this);
         mFetchNotesUseCase.registerListener(this);
         mFetchNotesUseCase.fetchNotesAndNotify();
     }
@@ -52,5 +49,10 @@ public class NoteListActivity extends BaseActivity implements FetchFakeNoteUseCa
     @Override
     public void onFetchNotesError(Throwable t) {
         Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onAddButtonClick() {
+        //Create another activity
     }
 }
