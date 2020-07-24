@@ -10,6 +10,7 @@ import com.example.mvcnote.common.BaseActivity;
 import com.example.mvcnote.database.FetchFakeNoteUseCase;
 import com.example.mvcnote.notes.Note;
 import com.example.mvcnote.screens.common.toolbar.ToolbarViewMvc;
+import com.example.mvcnote.screens.noteadd.NoteAddActivity;
 
 import java.util.List;
 
@@ -53,6 +54,6 @@ public class NoteListActivity extends BaseActivity implements FetchFakeNoteUseCa
 
     @Override
     public void onAddButtonClick() {
-        //Create another activity
+        NoteAddActivity.start(this);
     }
 }

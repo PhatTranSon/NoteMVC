@@ -17,7 +17,7 @@ public class NoteListItemViewMvcImpl extends BaseObservableViewMvc<NoteListItemV
     public NoteListItemViewMvcImpl(LayoutInflater inflater, @Nullable ViewGroup parent) {
         setRootView(inflater.inflate(R.layout.layout_note_list_item, parent, false));
 
-        titleText = findViewById(R.id.note_title_text);
+        titleText = findViewById(R.id.note_title_edit_text);
         idText = findViewById(R.id.note_id_text);
     }
 
