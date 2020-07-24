@@ -13,6 +13,7 @@ import com.example.mvcnote.notes.Note;
 import com.example.mvcnote.screens.common.alerdialog.DeleteAlertDialog;
 import com.example.mvcnote.screens.common.toolbar.ToolbarViewMvc;
 import com.example.mvcnote.screens.noteadd.NoteAddActivity;
+import com.example.mvcnote.screens.notedetails.NoteDetailsActivity;
 
 import java.util.List;
 
@@ -82,7 +83,7 @@ public class NoteListActivity extends BaseActivity implements FetchRoomNotesUseC
 
     @Override
     public void onNoteClick(Note note) {
-        //TODO: Start detail activity
+        NoteDetailsActivity.start(this, note);
     }
 
     @Override
