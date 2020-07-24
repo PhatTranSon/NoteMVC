@@ -10,6 +10,7 @@ import com.example.mvcnote.common.BaseActivity;
 import com.example.mvcnote.database.DeleteRoomNoteUseCase;
 import com.example.mvcnote.database.FetchRoomNotesUseCase;
 import com.example.mvcnote.notes.Note;
+import com.example.mvcnote.screens.common.alerdialog.DeleteAlertDialog;
 import com.example.mvcnote.screens.common.toolbar.ToolbarViewMvc;
 import com.example.mvcnote.screens.noteadd.NoteAddActivity;
 
@@ -85,8 +86,24 @@ public class NoteListActivity extends BaseActivity implements FetchRoomNotesUseC
     }
 
     @Override
-    public void onDeleteClick(Note note) {
-        mDeleteUseCase.deleteNoteAndNotify(note);
+    public void onDeleteClick(final Note note) {
+        DeleteAlertDialog deleteAlertDialog = new DeleteAlertDialog(
+                this,
+                getCompositionRoot().getViewMvcFactory(),
+                new DeleteAlertDialog.Listener() {
+                    @Override
+                    public void onYesClick() {
+                        //User click yes
+                        mDeleteUseCase.deleteNoteAndNotify(note);
+                    }
+
+                    @Override
+                    public void onNoClick() {
+                        //User click no
+                    }
+                }
+        );
+        deleteAlertDialog.show();
     }
 
     @Override

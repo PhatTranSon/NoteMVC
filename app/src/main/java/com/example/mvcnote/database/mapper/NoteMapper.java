@@ -11,4 +11,12 @@ public class NoteMapper {
                 entity.getBody()
         );
     }
+
+    public static NoteEntity toEntity(Note note) {
+        return new NoteEntity(
+                note.getId(),
+                note.getTitle(),
+                note.getBody()
+        );
+    }
 }

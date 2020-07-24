@@ -4,4 +4,6 @@
     <string name="note_body">Body</string>
     <string name="note_add">Add note</string>
     <string name="note_delete">Delete</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
 </resources>

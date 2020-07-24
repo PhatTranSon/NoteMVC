@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.mvcnote.screens.common.alerdialog.CustomAlertDialogViewMvc;
 import com.example.mvcnote.screens.common.toolbar.ToolbarViewMvc;
 import com.example.mvcnote.screens.noteadd.NoteAddViewMvc;
 import com.example.mvcnote.screens.noteadd.NoteAddViewMvcImpl;
@@ -48,6 +49,13 @@ public class ViewMvcFactory {
         return new NoteAddViewMvcImpl(
                 LayoutInflater.from(mContext),
                 parent
+        );
+    }
+
+    public CustomAlertDialogViewMvc getCustomDialogViewMvc() {
+        return new CustomAlertDialogViewMvc(
+                LayoutInflater.from(mContext),
+                null
         );
     }
 }
