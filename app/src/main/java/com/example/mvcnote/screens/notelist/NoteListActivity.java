@@ -14,7 +14,7 @@ import com.example.mvcnote.screens.noteadd.NoteAddActivity;
 
 import java.util.List;
 
-public class NoteListActivity extends BaseActivity implements FetchRoomNotesUseCase.Listener, ToolbarViewMvc.Listener {
+public class NoteListActivity extends BaseActivity implements FetchRoomNotesUseCase.Listener, ToolbarViewMvc.Listener, NoteListViewMvc.Listener {
     private NoteListViewMvc mViewMvc;
     private FetchRoomNotesUseCase mFetchNotesUseCase;
     private Toolbar mToolbar;
@@ -25,6 +25,7 @@ public class NoteListActivity extends BaseActivity implements FetchRoomNotesUseC
         super.onCreate(savedInstanceState);
         mFetchNotesUseCase = getCompositionRoot().getFetchFakeNoteUseCase();
         mViewMvc = getCompositionRoot().getViewMvcFactory().getNoteListViewMvc(null);
+        mViewMvc.registerListener(this);
 
         mToolbar = mViewMvc.findViewById(R.id.toolbar);
         mToolbarViewMvc = getCompositionRoot().getViewMvcFactory().getToolbarViewMvc(mToolbar);
@@ -55,5 +56,15 @@ public class NoteListActivity extends BaseActivity implements FetchRoomNotesUseC
     @Override
     public void onAddButtonClick() {
         NoteAddActivity.start(this);
+    }
+
+    @Override
+    public void onNoteClick(Note note) {
+        Toast.makeText(this, note.getTitle(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDeleteClick(Note note) {
+        Toast.makeText(this, "Delete: " + note.getTitle(), Toast.LENGTH_SHORT).show();
     }
 }

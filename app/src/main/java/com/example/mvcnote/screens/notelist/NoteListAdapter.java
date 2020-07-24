@@ -15,12 +15,29 @@ import com.example.mvcnote.screens.notelist.notelistitem.NoteListItemViewMvc;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteViewHolder> {
+public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteViewHolder> implements NoteListItemViewMvc.Listener {
     private final List<Note> mNotes = new ArrayList<>();
     private final ViewMvcFactory mViewMvcFactory;
+    private final Listener mListener;
 
-    public NoteListAdapter(ViewMvcFactory viewMvcFactory) {
+    @Override
+    public void onNoteClick(Note note) {
+        mListener.onNoteClick(note);
+    }
+
+    @Override
+    public void onDeleteClick(Note note) {
+        mListener.onDeleteClick(note);
+    }
+
+    public interface Listener {
+        void onNoteClick(Note note);
+        void onDeleteClick(Note note);
+    }
+
+    public NoteListAdapter(ViewMvcFactory viewMvcFactory, Listener listener) {
         this.mViewMvcFactory = viewMvcFactory;
+        this.mListener = listener;
     }
 
     @NonNull
@@ -28,6 +45,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.NoteVi
     public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
                                              int viewType) {
         NoteListItemViewMvc viewMvc = mViewMvcFactory.getNoteListItemView(parent);
+        viewMvc.registerListener(this);
         NoteViewHolder viewHolder = new NoteViewHolder(viewMvc.getRootView());
         viewHolder.itemView.setTag(viewMvc);
         return viewHolder;

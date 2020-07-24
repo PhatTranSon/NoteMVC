@@ -16,7 +16,7 @@ import java.util.List;
 
 public class NoteListViewMvcImpl
         extends BaseObservableViewMvc<NoteListViewMvc.Listener>
-        implements NoteListViewMvc {
+        implements NoteListViewMvc, NoteListAdapter.Listener {
     private RecyclerView mRecyclerView;
     private NoteListAdapter mAdapter;
 
@@ -25,7 +25,7 @@ public class NoteListViewMvcImpl
                                ViewMvcFactory viewMvcFactory) {
         setRootView(inflater.inflate(R.layout.layout_note_list, parent, false));
 
-        mAdapter = new NoteListAdapter(viewMvcFactory);
+        mAdapter = new NoteListAdapter(viewMvcFactory, this);
 
         mRecyclerView = findViewById(R.id.notes_recycler_view);
         mRecyclerView.setAdapter(mAdapter);
@@ -35,5 +35,19 @@ public class NoteListViewMvcImpl
     @Override
     public void bindNotes(List<Note> notes) {
         mAdapter.update(notes);
+    }
+
+    @Override
+    public void onNoteClick(Note note) {
+        for (Listener listener : getListeners()) {
+            listener.onNoteClick(note);
+        }
+    }
+
+    @Override
+    public void onDeleteClick(Note note) {
+        for (Listener listener : getListeners()) {
+            listener.onDeleteClick(note);
+        }
     }
 }

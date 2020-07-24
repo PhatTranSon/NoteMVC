@@ -8,6 +8,7 @@ import java.util.List;
 public interface NoteListViewMvc extends ObservableViewMvc<NoteListViewMvc.Listener> {
     interface Listener {
         void onNoteClick(Note note);
+        void onDeleteClick(Note note);
     }
     void bindNotes(List<Note> notes);
 }
