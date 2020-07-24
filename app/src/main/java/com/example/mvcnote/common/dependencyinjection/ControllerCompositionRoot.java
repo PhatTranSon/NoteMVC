@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.example.mvcnote.database.AddRoomNoteUseCase;
+import com.example.mvcnote.database.DeleteRoomNoteUseCase;
 import com.example.mvcnote.database.FetchRoomNotesUseCase;
 import com.example.mvcnote.database.NoteDao;
 import com.example.mvcnote.database.NoteDatabase;
@@ -40,5 +41,9 @@ public class ControllerCompositionRoot {
 
     public AddRoomNoteUseCase getAddNoteUseCase() {
         return mCompositionRoot.getAddRoomNoteUseCase(getNoteDao());
+    }
+
+    public DeleteRoomNoteUseCase getDeleteNoteUseCase() {
+        return mCompositionRoot.getDeleteRoomNoteUseCase(getNoteDao());
     }
 }
