@@ -3,7 +3,8 @@ package com.example.mvcnote.common.dependencyinjection;
 import android.app.Activity;
 import android.content.Context;
 
-import com.example.mvcnote.database.FetchFakeNoteUseCase;
+import com.example.mvcnote.database.AddRoomNoteUseCase;
+import com.example.mvcnote.database.FetchRoomNotesUseCase;
 import com.example.mvcnote.database.NoteDao;
 import com.example.mvcnote.database.NoteDatabase;
 import com.example.mvcnote.screens.common.ViewMvcFactory;
@@ -29,11 +30,15 @@ public class ControllerCompositionRoot {
         return mNoteDao;
     }
 
-    public FetchFakeNoteUseCase getFetchFakeNoteUseCase() {
+    public FetchRoomNotesUseCase getFetchFakeNoteUseCase() {
         return mCompositionRoot.getFetchFakeNoteUseCase(getNoteDao());
     }
 
     public ViewMvcFactory getViewMvcFactory() {
         return new ViewMvcFactory(getContext());
+    }
+
+    public AddRoomNoteUseCase getAddNoteUseCase() {
+        return mCompositionRoot.getAddRoomNoteUseCase(getNoteDao());
     }
 }

@@ -15,6 +15,11 @@ public class NoteEntity {
     @ColumnInfo(name = "body")
     String body;
 
+    public NoteEntity(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
+
     public int getId() {
         return id;
     }

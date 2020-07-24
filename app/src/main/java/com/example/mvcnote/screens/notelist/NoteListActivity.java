@@ -7,16 +7,16 @@ import android.widget.Toast;
 
 import com.example.mvcnote.R;
 import com.example.mvcnote.common.BaseActivity;
-import com.example.mvcnote.database.FetchFakeNoteUseCase;
+import com.example.mvcnote.database.FetchRoomNotesUseCase;
 import com.example.mvcnote.notes.Note;
 import com.example.mvcnote.screens.common.toolbar.ToolbarViewMvc;
 import com.example.mvcnote.screens.noteadd.NoteAddActivity;
 
 import java.util.List;
 
-public class NoteListActivity extends BaseActivity implements FetchFakeNoteUseCase.Listener, ToolbarViewMvc.Listener {
+public class NoteListActivity extends BaseActivity implements FetchRoomNotesUseCase.Listener, ToolbarViewMvc.Listener {
     private NoteListViewMvc mViewMvc;
-    private FetchFakeNoteUseCase mFetchNotesUseCase;
+    private FetchRoomNotesUseCase mFetchNotesUseCase;
     private Toolbar mToolbar;
     private ToolbarViewMvc mToolbarViewMvc;
 

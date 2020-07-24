@@ -6,20 +6,15 @@ import com.example.mvcnote.common.BaseObservable;
 import com.example.mvcnote.database.mapper.NoteMapper;
 import com.example.mvcnote.notes.Note;
 
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.FlowableSubscriber;
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class FetchFakeNoteUseCase extends BaseObservable<FetchFakeNoteUseCase.Listener> {
+public class FetchRoomNotesUseCase extends BaseObservable<FetchRoomNotesUseCase.Listener> {
     public interface Listener {
         void onFetchNotesSuccess(List<Note> notes);
         void onFetchNotesError(Throwable t);
@@ -27,7 +22,7 @@ public class FetchFakeNoteUseCase extends BaseObservable<FetchFakeNoteUseCase.Li
 
     private final NoteDao mNoteDao;
 
-    public FetchFakeNoteUseCase(NoteDao noteDao) {
+    public FetchRoomNotesUseCase(NoteDao noteDao) {
         this.mNoteDao = noteDao;
     }
 
